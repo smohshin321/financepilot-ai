@@ -1,16 +1,21 @@
 from unittest.mock import AsyncMock, patch
 
+from app.core.config import get_settings
 from fastapi.testclient import TestClient
 
 
 def test_health_endpoint_returns_service_status(client: TestClient) -> None:
-    response = client.get("/health")
+    response = client.get("/api/v1/health")
+
     assert response.status_code == 200
+
+    settings = get_settings()
+
     assert response.json() == {
         "status": "healthy",
-        "service": "FinancePilot AI",
-        "version": "0.2.0",
-        "environment": "development",
+        "service": settings.app_name,
+        "version": settings.app_version,
+        "environment": settings.app_env,
     }
 
 
