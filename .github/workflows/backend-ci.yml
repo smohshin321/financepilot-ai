@@ -49,7 +49,7 @@ jobs:
     env:
       APP_NAME: FinancePilot AI
       APP_VERSION: 0.2.0
-      APP_ENV: test
+      APP_ENV: testing
       DEBUG: "false"
       LOG_LEVEL: INFO
       API_PREFIX: /api/v1
