@@ -1,7 +1,6 @@
 import pytest
-from sqlalchemy import text
-
 from app.core.database import get_engine
+from sqlalchemy import text
 
 
 @pytest.mark.integration
