@@ -1,9 +1,7 @@
-from datetime import UTC, datetime
+from sqlalchemy import MetaData
+from sqlalchemy.orm import DeclarativeBase
 
-from sqlalchemy import DateTime, MetaData, func
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-
-NAMING_CONVENTION = {
+NAMING_CONVENTION: dict[str, str] = {
     "ix": "ix_%(column_0_label)s",
     "uq": "uq_%(table_name)s_%(column_0_name)s",
     "ck": "ck_%(table_name)s_%(constraint_name)s",
@@ -13,20 +11,6 @@ NAMING_CONVENTION = {
 
 
 class Base(DeclarativeBase):
-    """Declarative base shared by all FinancePilot AI modules."""
+    """Declarative base shared by all FinancePilot AI ORM models."""
 
     metadata = MetaData(naming_convention=NAMING_CONVENTION)
-
-
-class TimestampMixin:
-    """Reusable audit timestamps for persisted entities."""
-
-    created_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), server_default=func.now(), nullable=False
-    )
-    updated_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True),
-        server_default=func.now(),
-        onupdate=lambda: datetime.now(UTC),
-        nullable=False,
-    )
