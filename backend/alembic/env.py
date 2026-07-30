@@ -2,7 +2,7 @@ from logging.config import fileConfig
 
 from alembic import context
 from app.core.config import get_settings
-from app.modules.identity.models import Organization  # noqa: F401
+from app.modules.identity.models import Organization, User  # noqa: F401
 from app.shared.database import Base
 from sqlalchemy import engine_from_config, pool
 
