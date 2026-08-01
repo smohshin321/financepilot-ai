@@ -15,6 +15,9 @@ class Settings(BaseSettings):
         case_sensitive=False,
         extra="ignore",
     )
+    jwt_secret_key: SecretStr = SecretStr("replace-this-in-production")
+    jwt_algorithm: Literal["HS256"] = "HS256"
+    access_token_expire_minutes: int = Field(default=15, ge=1, le=1440)
 
     app_name: str = "FinancePilot AI"
     app_version: str = "0.2.0"
