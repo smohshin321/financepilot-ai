@@ -7,6 +7,7 @@ from sqlalchemy import Boolean, DateTime, ForeignKey, Index
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 if TYPE_CHECKING:
+    from app.modules.identity.models.membership_role import MembershipRole
     from app.modules.identity.models.organization import Organization
     from app.modules.identity.models.user import User
 
@@ -60,5 +61,10 @@ class Membership(UUIDPrimaryKeyMixin, TimestampMixin, Base):
 
     organization: Mapped["Organization"] = relationship(
         back_populates="memberships",
+        lazy="selectin",
+    )
+    membership_roles: Mapped[list["MembershipRole"]] = relationship(
+        back_populates="membership",
+        cascade="all, delete-orphan",
         lazy="selectin",
     )
