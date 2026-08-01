@@ -27,3 +27,12 @@ TIMEZONE_MAX_LENGTH = 64
 # ============================================================================
 
 DEFAULT_FISCAL_YEAR_START_MONTH = 1
+
+# ============================================================================
+
+
+ROLE_CODE_MAX_LENGTH = 100
+ROLE_NAME_MAX_LENGTH = 150
+PERMISSION_CODE_MAX_LENGTH = 150
+PERMISSION_NAME_MAX_LENGTH = 150
+DESCRIPTION_MAX_LENGTH = 500
