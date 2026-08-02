@@ -8,3 +8,11 @@ class InactiveUserError(Exception):
 
 class MembershipNotFoundError(Exception):
     """Raised when a user has no active organization membership."""
+
+
+class AuthorizationDeniedError(Exception):
+    """Raised when an identity lacks a required permission."""
+
+
+class RoleRequiredError(Exception):
+    """Raised when an identity lacks a required role."""
