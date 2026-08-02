@@ -1,3 +1,4 @@
+from app.modules.identity.api.authorization import RequirePermission
 from app.modules.identity.api.dependencies import (
     AuthenticationServiceDependency,
     CurrentUserDependency,
@@ -12,7 +13,7 @@ from app.modules.identity.schemas import (
     LoginRequest,
     LoginResponse,
 )
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
@@ -58,6 +59,16 @@ async def login(
         email=context.email,
         role_ids=context.role_ids,
     )
+
+
+@router.get("/protected")
+async def protected_endpoint(
+    current_user: CurrentUserDependency,
+    _: None = Depends(RequirePermission("budget.read")),
+) -> dict[str, str]:
+    """Protected endpoint for authorization testing."""
+
+    return {"message": "Access granted"}
 
 
 @router.get(
