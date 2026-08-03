@@ -1,8 +1,10 @@
 from logging.config import fileConfig
+from multiprocessing.dummy import connection
 
 from alembic import context
 from app.core.config import get_settings
-from app.modules.identity.models import Organization, User  # noqa: F401
+from app.modules.identity import models as identity_models  # noqa: F401
+from app.modules.planning import models as planning_models  # noqa: F401
 from app.shared.database import Base
 from sqlalchemy import engine_from_config, pool
 
@@ -18,10 +20,8 @@ target_metadata = Base.metadata
 
 def run_migrations_offline() -> None:
     context.configure(
-        url=config.get_main_option("sqlalchemy.url"),
+        connection=connection,
         target_metadata=target_metadata,
-        literal_binds=True,
-        dialect_opts={"paramstyle": "named"},
         compare_type=True,
     )
     with context.begin_transaction():
