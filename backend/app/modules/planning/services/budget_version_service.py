@@ -42,6 +42,14 @@ class BudgetVersionService:
 
         return await self._repository.add(budget_version)
 
+    async def list_for_scenario(
+        self,
+        scenario_id: UUID,
+    ) -> list[BudgetVersion]:
+        """Return budget versions for a scenario."""
+
+        return await self._repository.list_for_scenario(scenario_id)
+
     async def lock(
         self,
         budget_version_id: UUID,
