@@ -41,6 +41,14 @@ class BudgetLineService:
 
         return budget_line
 
+    async def list_for_budget_version(
+        self,
+        budget_version_id: UUID,
+    ) -> list[BudgetLine]:
+        """Return budget lines for a budget version."""
+
+        return await self._repository.list_for_budget_version(budget_version_id)
+
     async def update(
         self,
         budget_line: BudgetLine,
