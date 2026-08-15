@@ -20,6 +20,12 @@ from app.modules.planning.engine.financial_plan import (
     FinancialPlanEngine,
     FinancialPlanResult,
 )
+from app.modules.planning.engine.forecast_vintage import (
+    ForecastPeriodComparison,
+    ForecastRevisionResult,
+    ForecastVintage,
+    ForecastVintageEngine,
+)
 from app.modules.planning.engine.formula import (
     FormulaDefinition,
     FormulaOperation,
@@ -29,6 +35,25 @@ from app.modules.planning.engine.period_evaluator import PeriodCalculationEngine
 from app.modules.planning.engine.series import (
     PeriodValue,
     PlanningSeries,
+)
+from app.modules.planning.engine.variance import (
+    VarianceEngine,
+    VarianceResult,
+)
+from app.modules.planning.engine.variance_report import (
+    AggregateVarianceSnapshot,
+    PeriodVarianceSnapshot,
+    VarianceReport,
+    VarianceReportEngine,
+)
+from app.modules.planning.engine.variance_series import (
+    AggregateVarianceResult,
+    PeriodVarianceResult,
+    VarianceSeriesEngine,
+)
+from app.modules.planning.engine.variance_types import (
+    FinancialMetricType,
+    VarianceFavorability,
 )
 
 __all__ = [
@@ -54,4 +79,19 @@ __all__ = [
     "DuplicatePlanningPeriodError",
     "MissingPlanningPeriodError",
     "PeriodAlignmentError",
+    "VarianceEngine",
+    "VarianceResult",
+    "FinancialMetricType",
+    "VarianceFavorability",
+    "AggregateVarianceResult",
+    "PeriodVarianceResult",
+    "VarianceSeriesEngine",
+    "ForecastPeriodComparison",
+    "ForecastRevisionResult",
+    "ForecastVintage",
+    "ForecastVintageEngine",
+    "AggregateVarianceSnapshot",
+    "PeriodVarianceSnapshot",
+    "VarianceReport",
+    "VarianceReportEngine",
 ]
