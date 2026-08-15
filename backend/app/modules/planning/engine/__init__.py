@@ -20,6 +20,18 @@ from app.modules.planning.engine.financial_plan import (
     FinancialPlanEngine,
     FinancialPlanResult,
 )
+from app.modules.planning.engine.forecast_governance import (
+    ForecastGovernanceEngine,
+    ForecastGovernanceError,
+)
+from app.modules.planning.engine.forecast_horizon import (
+    ForecastHorizon,
+    ForecastHorizonEngine,
+    ForecastHorizonType,
+)
+from app.modules.planning.engine.forecast_rollforward import (
+    ForecastRollForwardEngine,
+)
 from app.modules.planning.engine.forecast_vintage import (
     ForecastPeriodComparison,
     ForecastRevisionResult,
@@ -32,6 +44,12 @@ from app.modules.planning.engine.formula import (
 )
 from app.modules.planning.engine.period import PlanningPeriod
 from app.modules.planning.engine.period_evaluator import PeriodCalculationEngine
+from app.modules.planning.engine.rolling_forecast import (
+    ForecastCadence,
+    RollingForecastEngine,
+    RollingForecastPlan,
+    RollingForecastVintage,
+)
 from app.modules.planning.engine.series import (
     PeriodValue,
     PlanningSeries,
@@ -94,4 +112,14 @@ __all__ = [
     "PeriodVarianceSnapshot",
     "VarianceReport",
     "VarianceReportEngine",
+    "ForecastCadence",
+    "RollingForecastEngine",
+    "RollingForecastPlan",
+    "RollingForecastVintage",
+    "ForecastHorizon",
+    "ForecastHorizonEngine",
+    "ForecastHorizonType",
+    "ForecastRollForwardEngine",
+    "ForecastGovernanceEngine",
+    "ForecastGovernanceError",
 ]
