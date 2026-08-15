@@ -180,9 +180,6 @@ def test_list_budget_lines() -> None:
             )
     finally:
         app.dependency_overrides.clear()
-        app.dependency_overrides[require_budget_read] = lambda: None
-        app.dependency_overrides[require_budget_write] = lambda: None
-        app.dependency_overrides[require_budget_manage] = lambda: None
 
     assert response.status_code == 200
     assert len(response.json()) == 2
